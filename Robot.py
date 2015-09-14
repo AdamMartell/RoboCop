@@ -4,6 +4,8 @@ class PowerSupply:
 		self.power = 100
 	def power_Remaining (self):
 		print "Power remaining: ", self.power
+	def charge(self):
+		powerSupply.power = powerSupply.power + 10
 		
 class Legs:
 	def run(self, powerSupply):
@@ -31,13 +33,24 @@ class Arms:
 		powerSupply.power = powerSupply.power - 2
 		print "*RoboCop handcuffs the criminal* Justice!!!"
 		
-
+class Vision:
+	def identifyCriminal(self, powerSupply):
+		powerSupply.power = powerSupply.power - 1
+		print "*Identifying criminal*"
+	def targetCriminal(self, powerSupply):
+		powerSupply.power = powerSupply.power - 1
+		print "*Targeting criminal*"
 		
+	
+
+	
 	
 powerSupply = PowerSupply()
 legs = Legs()
 arms = Arms()
+vision = Vision()
 
+#Arms
 arms.shoot(powerSupply)
 arms.shoot(powerSupply)
 arms.shoot(powerSupply)
@@ -49,4 +62,10 @@ arms.shoot(powerSupply)
 arms.shoot(powerSupply)
 arms.shoot(powerSupply)
 arms.shoot(powerSupply)
+powerSupply.power_Remaining()
+
+#Vision
+vision.identifyCriminal(powerSupply)
+powerSupply.power_Remaining()
+vision.targetCriminal(powerSupply)
 powerSupply.power_Remaining()

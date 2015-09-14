@@ -1,50 +1,16 @@
 
-class Robot:
-	def __init__(self):
+class PowerSupply:
+	def __init__ (self):
+		self.power = 100
+	def power_drain (self):
+		print self.power
 		
-	class PowerSupply:
-		def usePower(self, amountUsed):
-			self.power = self.power - amountUsed
-		
-		def powerRemaining(self):
-			print self.power
-		
-	class Legs(PowerSupply):
-		def run(self):
-			self.usePower(2)
-		def walk(self):
-			self.usePower(1)
-			
-	class Arms:
-		def shoot(self):
-		
-		def punch(self):
-		
-		def write(self):
-		
-		def handcuff(self):
-		
-	class Processor:
-		def decisionMaking(self):
-		
-		def crimeNotCrime (self):
-		
-		
-	class Vision:
-		def target(self):
-		
-		def IdentifyCriminal(self):
-		
-		
-	class Speech:
-		def mirandaRights(self):
+class Legs:
+	def run(self, powerSupply):
+		powerSupply.power = powerSupply.power - 2
 	
-roboCop = PowerSupply()
-roboLegs = Legs()
-roboCop.powerRemaining()
-roboCop.usePower(3)
-roboCop.powerRemaining()		
-roboCop.usePower(5)
-roboCop.powerRemaining()
-roboLegs.run()
-roboCop.powerRemaining()
+powerSupply = PowerSupply()
+legs = Legs()
+powerSupply.power_drain()
+legs.run(powerSupply)
+powerSupply.power_drain()

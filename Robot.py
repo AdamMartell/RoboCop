@@ -7,6 +7,7 @@ class PowerSupply:
 		print "Power remaining: ", self.power
 	def charge(self):
 		powerSupply.power = powerSupply.power + 10
+		print "RoboCop charged +10"
 		
 class Legs:
 	def run(self, powerSupply):
@@ -88,34 +89,36 @@ class Controller:
 	def roboCopController(self, powerSupply):
 		while True:
 			if powerSupply.power < 0:
-				print "RoboCop needs to recharge...Please press <F> to recharge"
+				print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				key = ord(getch())
 				if key == 27:
 					break
 				elif key == 113:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 119:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 104:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 112:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 115:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 99:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 100:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 97:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 116:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 98:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 101:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 102:
 					speech.mutterNoises(powerSupply)
+				elif key == 103:
+					powerSupply.charge()
 			else:
 				key = ord(getch())
 				if key == 27:
@@ -144,6 +147,8 @@ class Controller:
 					speech.readRights(powerSupply)
 				elif key == 102:
 					speech.mutterNoises(powerSupply)
+				elif key == 103:
+					powerSupply.charge()
 	
 	
 powerSupply = PowerSupply()
@@ -154,4 +159,6 @@ speech = Speech()
 test = Test()
 controller = Controller()
 controller.roboCopController(powerSupply)
+
+
 

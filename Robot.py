@@ -7,6 +7,7 @@ class PowerSupply:
 		print "Power remaining: ", self.power
 	def charge(self, amount):
 		self.power = self.power + amount
+		print "RoboCop charged +", amount
 	def deplete(self, amount):
 		self.power = self.power - amount
 		
@@ -45,7 +46,11 @@ class Vision:
 		print "*Identifying criminal*"
 	def targetCriminal(self, powerSupply):
 		powerSupply.deplete(1)
-		print "*Targeting criminal*"
+		targetChance = random.random()
+		if (targetChance > .25):
+			print "*Criminal targeted.*"
+		else:
+			print "*Unable to target. Try again*"
 		
 class Speech:
 	def yellHalt (self,powerSupply):
@@ -125,6 +130,8 @@ class Controller:
 					print "RoboCop needs to recharge...Please press <F> to recharge"
 				elif key == 102:
 					speech.mutterNoises(powerSupply)
+				elif key == 103:
+					powerSupply.charge(10)
 			else:
 				key = ord(getch())
 				if key == 27:
@@ -153,6 +160,8 @@ class Controller:
 					speech.readRights(powerSupply)
 				elif key == 102:
 					speech.mutterNoises(powerSupply)
+				elif key == 103:
+					powerSupply.charge(10)
 	
 	
 powerSupply = PowerSupply()
@@ -161,10 +170,12 @@ arms = Arms()
 vision = Vision()
 speech = Speech()
 test = Test()
-test.testLegs()
-test.testArms()
+# test = Test()
+# test.testLegs()
+# test.testArms()
 test.testVision()
-test.testSpeech()
-#controller = Controller()
-#controller.roboCopController(powerSupply)
+# test.testSpeech()
+controller = Controller()
+controller.roboCopController(powerSupply)
+
 

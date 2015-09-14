@@ -1,4 +1,5 @@
 import random
+from msvcrt import getch
 class PowerSupply:
 	def __init__ (self):
 		self.power = 100
@@ -83,7 +84,66 @@ class Test:
 		speech.mutterNoises(powerSupply)
 		powerSupply.power_Remaining()
 		
-
+class Controller:
+	def roboCopController(self, powerSupply):
+		while True:
+			if powerSupply.power < 0:
+				print "RoboCop needs to recharge...Please press <F> to recharge"
+				key = ord(getch())
+				if key == 27:
+					break
+				elif key == 113:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 119:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 104:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 112:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 115:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 99:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 100:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 97:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 116:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 98:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 101:
+					print "RoboCop needs to recharge...Please press <F> to recharge"
+				elif key == 102:
+					speech.mutterNoises(powerSupply)
+			else:
+				key = ord(getch())
+				if key == 27:
+					break
+				elif key == 113:
+					legs.run(powerSupply)
+				elif key == 119:
+					legs.walk(powerSupply)
+				elif key == 104:
+					legs.roundHouse(powerSupply)
+				elif key == 112:
+					arms.punch(powerSupply)
+				elif key == 115:
+					arms.shoot(powerSupply)
+				elif key == 99:
+					arms.handcuff(powerSupply)
+				elif key == 100:
+					powerSupply.power_Remaining()
+				elif key == 97:
+					vision.identifyCriminal(powerSupply)
+				elif key == 116:
+					vision.targetCriminal(powerSupply)
+				elif key == 98:
+					speech.yellHalt(powerSupply)
+				elif key == 101:
+					speech.readRights(powerSupply)
+				elif key == 102:
+					speech.mutterNoises(powerSupply)
 	
 	
 powerSupply = PowerSupply()
@@ -92,4 +152,6 @@ arms = Arms()
 vision = Vision()
 speech = Speech()
 test = Test()
+controller = Controller()
+controller.roboCopController(powerSupply)
 

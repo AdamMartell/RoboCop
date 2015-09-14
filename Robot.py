@@ -41,6 +41,17 @@ class Vision:
 		powerSupply.power = powerSupply.power - 1
 		print "*Targeting criminal*"
 		
+class Speech:
+	def yellHalt (self,powerSupply):
+		powerSupply.power = powerSupply.power - 1
+		print "*RoboCop yells 'HALT!'"
+	def readRights (self, powerSupply):
+		powerSupply.power = powerSupply.power - 5
+		print "*RoboCop reads to suspect their rights with intense enthusiasm*"
+	def mutterNoises (self, powerSupply):
+		powerSupply.power = powerSupply.power + 2
+		print "*RoboCop shakes violently while muttering robot noises, giving +2 charge to his battery power"
+		
 	
 
 	
@@ -49,6 +60,15 @@ powerSupply = PowerSupply()
 legs = Legs()
 arms = Arms()
 vision = Vision()
+
+#legs:
+powerSupply.power_Remaining()
+legs.run(powerSupply)
+powerSupply.power_Remaining()
+legs.walk(powerSupply)
+powerSupply.power_Remaining()
+legs.roundHouse(powerSupply)
+powerSupply.power_Remaining()
 
 #Arms
 arms.shoot(powerSupply)
@@ -62,6 +82,15 @@ arms.shoot(powerSupply)
 arms.shoot(powerSupply)
 arms.shoot(powerSupply)
 arms.shoot(powerSupply)
+powerSupply.power_Remaining()
+
+#speech:
+speech = Speech()
+speech.yellHalt(powerSupply)
+powerSupply.power_Remaining()
+speech.readRights(powerSupply)
+powerSupply.power_Remaining()
+speech.mutterNoises(powerSupply)
 powerSupply.power_Remaining()
 
 #Vision

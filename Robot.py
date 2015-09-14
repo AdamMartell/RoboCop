@@ -1,4 +1,4 @@
-
+import random
 class PowerSupply:
 	def __init__ (self):
 		self.power = 100
@@ -17,13 +17,36 @@ class Legs:
 		print "*RoboCop roundhouses a bitch* *Smack!!!!!*"
 		
 class Arms:
+	def punch(self, powerSupply):
+		powerSupply.power = powerSupply.power - 4
+		print "*RoboCop punches the criminal*  *POWWW*"
+	def shoot(self, powerSupply):
+		powerSupply.power = powerSupply.power - 3
+		hitChance = random.random()
+		if (hitChance > .20):
+			print "*RoboCop Shoots the criminal* *BANG*"
+		else:
+			print "Miss"
+	def handcuff(self, powerSupply):
+		powerSupply.power = powerSupply.power - 2
+		print "*RoboCop handcuffs the criminal* Justice!!!"
+		
+
+		
 	
 powerSupply = PowerSupply()
 legs = Legs()
-powerSupply.power_Remaining()
-legs.run(powerSupply)
-powerSupply.power_Remaining()
-legs.walk(powerSupply)
-powerSupply.power_Remaining()
-legs.roundHouse(powerSupply)
+arms = Arms()
+
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
+arms.shoot(powerSupply)
 powerSupply.power_Remaining()

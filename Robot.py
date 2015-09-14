@@ -52,7 +52,16 @@ class Speech:
 		powerSupply.power = powerSupply.power + 2
 		print "*RoboCop shakes violently while muttering robot noises, giving +2 charge to his battery power"
 		
-	
+class Test:
+	def testLegs(self,Legs):
+		powerSupply.power_Remaining()
+		legs.run(powerSupply)
+		powerSupply.power_Remaining()
+		legs.walk(powerSupply)
+		powerSupply.power_Remaining()
+		legs.roundHouse(powerSupply)
+		powerSupply.power_Remaining()
+		
 
 	
 	
@@ -60,41 +69,7 @@ powerSupply = PowerSupply()
 legs = Legs()
 arms = Arms()
 vision = Vision()
-
-#legs:
-powerSupply.power_Remaining()
-legs.run(powerSupply)
-powerSupply.power_Remaining()
-legs.walk(powerSupply)
-powerSupply.power_Remaining()
-legs.roundHouse(powerSupply)
-powerSupply.power_Remaining()
-
-#Arms
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-arms.shoot(powerSupply)
-powerSupply.power_Remaining()
-
-#speech:
 speech = Speech()
-speech.yellHalt(powerSupply)
-powerSupply.power_Remaining()
-speech.readRights(powerSupply)
-powerSupply.power_Remaining()
-speech.mutterNoises(powerSupply)
-powerSupply.power_Remaining()
+test = Test()
+test.testLegs(Legs)
 
-#Vision
-vision.identifyCriminal(powerSupply)
-powerSupply.power_Remaining()
-vision.targetCriminal(powerSupply)
-powerSupply.power_Remaining()

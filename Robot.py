@@ -61,6 +61,27 @@ class Test:
 		powerSupply.power_Remaining()
 		legs.roundHouse(powerSupply)
 		powerSupply.power_Remaining()
+	def testArms(self,Arms):
+		powerSupply.power_Remaining()
+		arms.punch(powerSupply)
+		powerSupply.power_Remaining()
+		arms.shoot(powerSupply)
+		powerSupply.power_Remaining()
+		arms.handcuff(powerSupply)
+		powerSupply.power_Remaining()
+	def testVision(self,Vision):
+		powerSupply.power_Remaining()
+		vision.identifyCriminal(powerSupply)
+		powerSupply.power_Remaining()
+		vision.targetCriminal(powerSupply)
+	def testSpeech(self,Speech):
+		powerSupply.power_Remaining()
+		speech.yellHalt(powerSupply)
+		powerSupply.power_Remaining()
+		speech.readRights(powerSupply)
+		powerSupply.power_Remaining()
+		speech.mutterNoises(powerSupply)
+		powerSupply.power_Remaining()
 		
 
 	
@@ -71,5 +92,4 @@ arms = Arms()
 vision = Vision()
 speech = Speech()
 test = Test()
-test.testLegs(Legs)
 

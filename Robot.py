@@ -12,6 +12,14 @@ class PowerSupply:
 		self.power = self.power - amount
 		
 		
+class Stats:
+	def __init__(self):
+		self.bodyCount = 0
+	def addBody(self, numOfBodies):
+		self.bodyCount += numOfBodies
+	def displayBodyCount(self):
+		print "RoboCop has un-instanciated ", self.bodyCount, "criminals"
+		
 		
 		
 class Legs:
@@ -21,9 +29,11 @@ class Legs:
 	def walk(self, powerSupply):
 		powerSupply.deplete(1)
 		print "*RoboCop Walks*"
-	def roundHouse(self, powerSupply):
-		powerSupply.deplete(5)
-		print "*RoboCop roundhouses a criminal* *Smack!!!!!*"
+	def roundHouse(self, powerSupply, stats):
+		powerSupply.power = powerSupply.power - 5
+		numOfHits = random.randrange(1, 5)
+		stats.addBody(numOfHits)
+		print "*RoboCop roundhouses", numOfHits, " criminal(s)* *Smack!!!!!*"
 		
 class Arms:
 	def punch(self, powerSupply):
@@ -102,36 +112,38 @@ class Controller:
 	def roboCopController(self, powerSupply):
 		while True:
 			if powerSupply.power < 0:
-				print "RoboCop needs to recharge...Please press <F> to recharge"
+				print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				key = ord(getch())
 				if key == 27:
 					break
 				elif key == 113:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 119:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 104:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 112:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 115:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 99:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 100:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 97:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 116:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 98:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 101:
-					print "RoboCop needs to recharge...Please press <F> to recharge"
+					print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				elif key == 102:
 					speech.mutterNoises(powerSupply)
 				elif key == 103:
 					powerSupply.charge(10)
+				elif key == 105:
+					stats.displayBodyCount()
 			else:
 				key = ord(getch())
 				if key == 27:
@@ -141,7 +153,7 @@ class Controller:
 				elif key == 119:
 					legs.walk(powerSupply)
 				elif key == 104:
-					legs.roundHouse(powerSupply)
+					legs.roundHouse(powerSupply, stats)
 				elif key == 112:
 					arms.punch(powerSupply)
 				elif key == 115:
@@ -162,6 +174,8 @@ class Controller:
 					speech.mutterNoises(powerSupply)
 				elif key == 103:
 					powerSupply.charge(10)
+				elif key == 105:
+					stats.displayBodyCount()
 	
 	
 powerSupply = PowerSupply()
@@ -170,10 +184,11 @@ arms = Arms()
 vision = Vision()
 speech = Speech()
 test = Test()
+stats = Stats()
 # test = Test()
 # test.testLegs()
 # test.testArms()
-test.testVision()
+#test.testVision()
 # test.testSpeech()
 controller = Controller()
 controller.roboCopController(powerSupply)

@@ -18,7 +18,7 @@ class Legs:
 		print "*RoboCop Walks*"
 	def roundHouse(self, powerSupply):
 		powerSupply.power = powerSupply.power - 5
-		print "*RoboCop roundhouses a bitch* *Smack!!!!!*"
+		print "*RoboCop roundhouses a criminal* *Smack!!!!!*"
 		
 class Arms:
 	def punch(self, powerSupply):

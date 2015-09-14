@@ -11,7 +11,7 @@ class PowerSupply:
 			print "RoboCop charged +", amount
 		else:
 			raise Exception()
-	def deplete(self, amount):
+	def deplete(self, amount = 0):
 		self.power = self.power - amount
 		
 		
@@ -52,6 +52,13 @@ class Arms:
 	def handcuff(self, powerSupply):
 		powerSupply.deplete(2)
 		print "*RoboCop handcuffs the criminal* Justice!!!"
+		
+class RightArm(Arms):
+	def shoot(self,powerSupply):
+		super (RightArm, self).shoot(powerSupply)
+		hitChance = random.random()
+		if (hitChance > .70):
+			print "Right Arm bonus shot. Sweet!"
 		
 class Vision:
 	def identifyCriminal(self, powerSupply):

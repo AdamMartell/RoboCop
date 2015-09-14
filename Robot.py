@@ -30,7 +30,8 @@ class Arms:
 		if (hitChance > .20):
 			print "*RoboCop Shoots the criminal* *BANG*"
 		else:
-			print "Miss"
+			print "*RoboCop misses. -20 power*"
+			powerSupply.power = powerSupply.power - 20
 	def handcuff(self, powerSupply):
 		powerSupply.power = powerSupply.power - 2
 		print "*RoboCop handcuffs the criminal* Justice!!!"
@@ -41,8 +42,11 @@ class Vision:
 		print "*Identifying criminal*"
 	def targetCriminal(self, powerSupply):
 		powerSupply.power = powerSupply.power - 1
-		print "*Targeting criminal*"
-		
+		targetChance = random.random()
+		if (targetChance > .25):
+			print "*Criminal targeted.*"
+		else:
+			print "*Unable to target. Try again*"
 class Speech:
 	def yellHalt (self,powerSupply):
 		powerSupply.power = powerSupply.power - 1

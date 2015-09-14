@@ -1,12 +1,12 @@
 import random
 from msvcrt import getch
 class PowerSupply:
-	def __init__ (self):
-		self.power = 100
-	def power_Remaining (self):
+	def __init__ (self, power = 100):
+		self.power = power
+	def displayPowerRemaining (self):
 		print "Power remaining: ", self.power
-	def charge(self, amount):
-		if self.power < 1000:
+	def charge(self, amount, power = 1000):
+		if self.power < power:
 			self.power = self.power + amount
 			print "RoboCop charged +", amount
 		else:
@@ -86,37 +86,37 @@ class Speech:
 class Test:
 	def testLegs(self):
 		legs = Legs()
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		legs.run(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		legs.walk(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		legs.roundHouse(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 	def testArms(self):
 		arms = Arms()
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		arms.punch(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		arms.shoot(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		arms.handcuff(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 	def testVision(self):
 		vision = Vision()
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		vision.identifyCriminal(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		vision.targetCriminal(powerSupply)
 	def testSpeech(self):
 		speech = Speech()
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		speech.yellHalt(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		speech.readRights(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		speech.mutterNoises(powerSupply)
-		powerSupply.power_Remaining()
+		powerSupply.displayPowerRemaining()
 		
 class Controller:
 	def roboCopController(self, powerSupply):
@@ -172,7 +172,7 @@ class Controller:
 					elif key == 99:
 						arms.handcuff(powerSupply)
 					elif key == 100:
-						powerSupply.power_Remaining()
+						powerSupply.displayPowerRemaining()
 					elif key == 97:
 						vision.identifyCriminal(powerSupply)
 					elif key == 116:
@@ -204,5 +204,3 @@ stats = Stats()
 # test.testSpeech()
 controller = Controller()
 controller.roboCopController(powerSupply)
-
-

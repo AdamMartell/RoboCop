@@ -67,7 +67,7 @@ class LeftArm(Arms):
 	def shoot(self, powerSupply):
 		super (LeftArm, self).shoot(powerSupply)
 		bonusRoundChance = random.random()
-		if (bonusRoundChance > 0) and (powerSupply.power > 3):
+		if (bonusRoundChance > .2) and (powerSupply.power > 3):
 			self.shoot(powerSupply)
 
 class Vision:
@@ -168,6 +168,10 @@ class Controller:
 						powerSupply.charge(10)
 					elif key == 105:
 						stats.displayBodyCount()
+					elif key ==107:
+						print "RoboCop needs to recharge...Please press <F or G> to recharge"
+					elif key ==108:
+						print "RoboCop needs to recharge...Please press <F or G> to recharge"
 				else:
 					key = ord(getch())
 					if key == 27:
@@ -202,8 +206,11 @@ class Controller:
 						stats.displayBodyCount()
 					elif key ==107:
 						leftArm.shoot(powerSupply)
+					elif key ==108:
+						rightArm.shoot(powerSupply)
+					
 			except Exception:
-				print "Max power reached"
+				print "An error has occurred.  Please try discharging some power and trying again.  If this does not help please contact your local RoboCop distributor"
 
 powerSupply = PowerSupply()
 legs = Legs()

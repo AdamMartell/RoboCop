@@ -92,6 +92,9 @@ class Speech:
 	def mutterNoises (self, powerSupply):
 		powerSupply.charge(2)
 		print "*RoboCop shakes violently while muttering robot noises, giving +2 charge to his battery power"
+	def sayMessage(self,message):
+		if (message > 0):
+			print message.upper()
 		
 class Test:
 	def testLegs(self):
@@ -217,5 +220,4 @@ leftArm = LeftArm()
 # test.testSpeech()
 controller = Controller()
 controller.roboCopController(powerSupply)
-
 

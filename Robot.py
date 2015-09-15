@@ -36,9 +36,12 @@ class Legs:
 		powerSupply.power = powerSupply.power - 5
 		numOfHits = random.randrange(1, 5)
 		stats.addBody(numOfHits)
-		print "*RoboCop roundhouses", numOfHits, " criminal(s)* *Smack!!!!!*"
-		
-class Arms:
+		criminalRoundHouse = "*RoboCop roundhouses " + str(numOfHits) + " criminals* *Smack!!!!!*"
+		if numOfHits == 1:
+			print criminalRoundHouse[:31] + criminalRoundHouse[32:]
+		else:
+			print criminalRoundHouse
+class Arms(object):
 	def punch(self, powerSupply):
 		powerSupply.deplete(4)
 		print "*RoboCop punches the criminal*  *POWWW*"
@@ -59,7 +62,14 @@ class RightArm(Arms):
 		hitChance = random.random()
 		if (hitChance > .70):
 			print "Right Arm bonus shot. Sweet!"
-		
+			
+class LeftArm(Arms):
+	def shoot(self, powerSupply):
+		super (LeftArm, self).shoot(powerSupply)
+		bonusRoundChance = random.random()
+		if (bonusRoundChance > 0) and (powerSupply.power > 3):
+			self.shoot(powerSupply)
+
 class Vision:
 	def identifyCriminal(self, powerSupply):
 		powerSupply.deplete(1)
@@ -187,6 +197,8 @@ class Controller:
 						powerSupply.charge(10)
 					elif key == 105:
 						stats.displayBodyCount()
+					elif key ==107:
+						leftArm.shoot(powerSupply)
 			except Exception:
 				print "Max power reached"
 
@@ -197,6 +209,7 @@ vision = Vision()
 speech = Speech()
 test = Test()
 stats = Stats()
+leftArm = LeftArm()
 # test = Test()
 # test.testLegs()
 # test.testArms()
@@ -204,3 +217,5 @@ stats = Stats()
 # test.testSpeech()
 controller = Controller()
 controller.roboCopController(powerSupply)
+
+

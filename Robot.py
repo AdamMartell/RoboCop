@@ -104,7 +104,7 @@ class Test:
 		powerSupply.displayPowerRemaining()
 		legs.walk(powerSupply)
 		powerSupply.displayPowerRemaining()
-		legs.roundHouse(powerSupply)
+		legs.roundHouse(powerSupply, stats)
 		powerSupply.displayPowerRemaining()
 	def testArms(self):
 		arms = Arms()
